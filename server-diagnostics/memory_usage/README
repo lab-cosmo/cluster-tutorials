@@ -1,0 +1,47 @@
+Checking RAM and VRAM usage
+--------------------------
+After ssh into the frontend server you ssh into the targeted server
+```
+ssh imxcluster-XX
+htop
+```
+where XX can go from 01 up to 15.
+To check the VRAM usage of the GPU node
+```
+ssh imxcluster-gpu
+nvidia-smi
+# or in my opinion better user interface
+nvtop
+```
+
+Polling RAM usage of a job
+-------------------------
+
+Often when you run a job, you don't know how much RAM you will need and you don't want to use the whole RAM. If it is to possible to run the job for a small number of iterations with the same RAM usage, then one can measure the RAM usage first to run the job with the appropriate RAM. One can obtain the maximal RAM usage of the last job with SLURM's sacct command
+
+```
+sacct --units=M --format="MaxRSS" | tail -n 1
+```
+
+By default the RAM usage is returned in KB, to obtain it in MB use `--units=M` or in GB `--units=G`.
+However the memory usage is only polled in a repeating interval by SLURM (by default every 60s), such that the memory usage might not be very accurate.
+To test the sampling interval you can run `memory_usage_fast.py` and check the memory usage with the above commend. 
+You will probably see that the job ends to fast to sample the correct memory usage which should be around 775MB.
+In any case you should get with `memory_usage_slow.py` the correct memory usage where we put a sleep of 60s in the peak memory usage.
+You can increase the sampling frequency to per 1 second.
+
+```
+--acctg-freq=task=1
+```
+
+You should be able to use the correct memory usage for the `memory_usage_fast.py` with the above configuration. Of course the exact results depend on the SLURM configuration on the server and speed. You can play around and look also at the CPUTime of your job to see when the job is profiled.
+For a higher frequencies you will need to use a sophisticated memory profiler.
+
+
+
+Resources:
+----------
+
+https://stackoverflow.com/a/64544070
+See acctg-freq https://slurm.schedmd.com/sbatch.html
+See JobAcctGatherFrequency https://slurm.schedmd.com/slurm.conf.html

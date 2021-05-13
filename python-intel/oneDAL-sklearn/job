@@ -1,0 +1,12 @@
+# You can use the intel optimized python module or with standard python
+# Here we use standard python version
+
+# Install intels optimized scikit version
+# https://github.com/intel/scikit-learn-intelex
+python3 -m venv $HOME/venv/intel-sklearn
+source $HOME/venv/intel-sklearn/bin/activate
+pip install -U scikit-learn-intelex
+
+which python3
+python3 --version
+python3 bench.py

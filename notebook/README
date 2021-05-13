@@ -1,0 +1,20 @@
+Before you start to run the notebook on the remote server, set the jupyter notebook password on the remote server (on the frontend server)
+```
+jupyter notebook password
+```
+
+In general you can forward the notebook running on the remote server to your local machine by ssh tunneling with
+```
+ssh -t GASPAR_ACCOUNT@FRONTEND_SERVER_ADDRESS -L LOCAL_PORTS:localhost:LOCAL_PORTS ssh NODE_NAME -L REMOTE_PORTS:localhost:REMOTE_PORTS
+```
+
+To give a more concrete example a `notebook_job` file is offered which you can run on the server, wait until the job runs.
+You can then bind the notebook on your local machine on port 8888 and forward it to the remote server with 
+```
+ssh -t -t GASPAR_ACCOUNT@FRONTEND_SERVER_ADDRESS -L 8888:localhost:8888 ssh imxcluster-08 -L 8889:localhost:8889
+```
+Now type in your browser
+```
+imxcluster-08:8888
+```
+and type the password you have set at the beginning.

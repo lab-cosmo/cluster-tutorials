@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#SBATCH --get-user-env
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=1000
+#SBATCH --time=00:05:00 
+
+echo $HOME
+echo $SCRATCH
+export TMPSCRATCH=/tmpscratch
+
+rm -f io_results.out
+
+dd if=/dev/zero of=$HOME/tmp bs=512B count=1024 >> io_results.out
+dd if=/dev/zero of=$HOME/tmp bs=64M count=64 >> io_results.out
+dd if=/dev/zero of=$HOME/tmp bs=1G count=1 >> io_results.out
+rm $HOME/tmp
+
+dd if=/dev/zero of=$SCRATCH/tmp bs=512B count=1024 >> io_results.out
+dd if=/dev/zero of=$SCRATCH/tmp bs=64M count=64 >> io_results.out
+dd if=/dev/zero of=$SCRATCH/tmp bs=1G count=1 >> io_results.out
+rm $SCRATCH/tmp
+
+dd if=/dev/zero of=$TMPSCRATCH/tmp bs=512B count=1024 >> io_results.out
+dd if=/dev/zero of=$TMPSCRATCH/tmp bs=64M count=64 >> io_results.out
+dd if=/dev/zero of=$TMPSCRATCH/tmp bs=1G count=1 >> io_results.out
+rm $TMPSCRATCH/tmp

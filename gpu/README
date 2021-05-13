@@ -1,0 +1,3 @@
+This folder contains the general job file to run a job on the GPU and load the NVIDIA SDK as in `gpu_job`.
+You can also use the GPU node to run CPU calculations. Since the GPU node only has one GPU, you automatically can use the whole VRAM.
+Some NVIDIA libraries (e.g. NPP) are not installed on the cluster as they did not seem to be important for our applications. If you require them, please let me know.

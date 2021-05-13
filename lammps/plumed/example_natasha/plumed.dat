@@ -1,0 +1,39 @@
+# Units (to be consistent with LAMMPS i/o)
+#   length=angstrom <--- only this need to be fixed
+#   time=ps (Plumed default)
+#   energy=eV <--- only this need to be fixeda
+UNITS LENGTH=A ENERGY=eV
+#UNITS NATURAL
+#RESTART
+c: FIXEDATOM AT=0,0,-6
+FCCUBIC ...
+LABEL=fcc
+SPECIES=1-384
+SWITCH={CUBIC D_0=2.5 D_MAX=3.0}
+ALPHA=27
+MORE_THAN={SMAP R_0=0.45 D_0=0.0 A=8 B=8}
+MEAN
+LOWMEM
+... FCCUBIC
+
+
+
+centercub: AROUND DATA=fcc ATOM=c ZLOWER=-3.5 ZUPPER=3.5 SIGMA=0.5 MORE_THAN={SMAP R_0=0.45 D_0=0.0 A=8 B=8}
+
+
+wallsolid: LOWER_WALLS ARG=centercub.morethan AT=150 OFFSET=-30 KAPPA=4.
+ 
+METAD ...
+LABEL=metad
+ARG=fcc.morethan #sidecub.lessthan
+PACE=500 HEIGHT=0.042 SIGMA=5.00 FILE=HILLS
+TEMP=1700 BIASFACTOR=90
+GRID_MIN=50 GRID_MAX=400 GRID_SPACING=1
+... METAD
+
+
+DUMPMULTICOLVAR DATA=fcc ORIGIN=c STRIDE=100 FILE=fcc.xyz
+PRINT ARG=centercub.morethan STRIDE=1000 FILE=centercub
+PRINT ARG=metad.bias,wallsolid.bias STRIDE=100 FILE=biases
+ENDPLUMED
+

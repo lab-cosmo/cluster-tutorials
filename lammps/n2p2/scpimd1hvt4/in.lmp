@@ -1,0 +1,28 @@
+
+clear
+variable dump_file string "trj_lammps"
+
+units metal 
+boundary  p p p 
+atom_modify sort 0 0.0 
+
+read_data init.0.data
+
+### interactions 
+#pair_style	eam/alloy
+#pair_coeff * * Ni-Al-Mishin-2009.eam.alloy Ni
+variable runnerDir       string "/home/goscinsk/bench/lammps-i-pi/scpimd1hvt4/nn"
+variable runnerCutoff    equal  11.2
+pair_style nnp dir ${runnerDir} showew no resetew yes maxew 1000000  cflength 1.8897261328  cfenergy 0.0367493254
+pair_coeff * *  ${runnerCutoff}
+
+
+### run
+variable TEMP equal 300
+velocity all create ${TEMP} 29 rot yes mom yes dist gaussian
+
+
+fix 1 all ipi scpimd1hvt4 7777  unix 
+run 1000000000
+
+

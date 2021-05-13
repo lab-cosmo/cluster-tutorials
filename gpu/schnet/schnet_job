@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# TODO set directory where cluster-tutorial was downloaded 
+export DIRECTORY=$HOME
+
+#SBATCH --get-user-env
+#SBATCH --chdir=$DIRECTORY/cluster-tutorial/server-diagnostics/
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=0:05:00
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+
+module purge
+module load hpc-sdk
+
+# Here you could use for virtual environment
+# If not changed it automatically creates one
+pip install virtualenv
+virtualenv $HOME/venv/cluster-tutorial
+source $HOME/venv/cluster-tutorial/bin/activate
+pip install schnetpack
+
+# used in the python script to locate the qm9.db file
+export QM9_DIRECTORY=/commonscratch/goscinsk/datasets/
+export MODEL_DIRECTORY=/commonscratch/goscinsk/models/schnet_test/
+
+# run benchmark
+python schnet_ram.py
+
+exit 0

@@ -1,0 +1,59 @@
+atom_style      atomic
+units           metal
+dimension       3
+boundary        p p p
+#processors      * * 1
+
+variable seed equal 14201
+variable temper equal 1700 
+variable temperliq equal 1700
+variable temperliq2 equal ${temperliq}*2.
+variable temperliq11 equal ${temperliq}*1.1
+variable zstress equal 0.0
+variable thermotau equal 0.1
+variable barotau equal 5.0
+variable mass1 equal  58.6934                                               # mass for element 1 (Ni)  (g/mol)
+
+variable runnerDir       string "/home/goscinsk/bench/lammps-i-pi/scpimd1hvt4/nn/"
+variable runnerCutoff    equal  12
+variable xdim equal 4
+variable ydim equal 4
+variable zdim equal 6
+variable alat equal 3.57
+# Define the lattice: we want to study (110) interface that is along the Z direction
+lattice fcc ${alat} orient x 1 0 0 orient y 0 1 0 orient z 0 0 1
+region box block 0 ${xdim} 0 ${ydim} 0 ${zdim} units lattice
+create_box 1 box
+create_atoms 1 box
+mass 1 ${mass1} 
+
+pair_style nnp dir ${runnerDir} showew no resetew yes maxew 1000000  cflength 1.8897261328  cfenergy 0.0367493254
+pair_coeff * *  ${runnerCutoff}
+
+# Regions and group
+#region zcenter block 0 INF 0 INF $(lz/3) $(2*lz/3) side in units box
+reset_timestep 5030000
+region zcenter block 0 INF 0 INF $(lz/2) $(lz) side in units box
+group solid region zcenter
+group free subtract all solid
+
+# Simulation params
+timestep 0.001
+neighbor 0.2 bin
+thermo 100 
+thermo_style custom step time temp ke pe etotal press pxx pyy pzz lx ly lz density
+thermo_modify flush yes
+
+
+# equilibrate all
+dump 3 all xyz 1000 METADYN.xyz 
+dump_modify 3 element Ni
+velocity all create ${temper} ${seed} dist gaussian
+fix bias all plumed   plumedfile  plumed.dat     outfile p1.log
+fix equal2 all npt temp ${temper} ${temper} 0.1 aniso 0.0 0.0 .9 mtk yes
+run 2000000
+run 2000000
+run 2000000
+run 2000000
+run 2000000
+unfix bias
