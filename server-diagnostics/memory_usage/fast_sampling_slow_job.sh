@@ -10,4 +10,4 @@
 #SBATCH --time=00:05:00 
 #SBATCH --acctg-freq=task=1
 
-python ram_usage_slow.py
+python3 ram_usage_slow.py

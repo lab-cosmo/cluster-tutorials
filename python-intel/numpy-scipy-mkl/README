@@ -1,1 +1,1 @@
-The job file `mkl_job` shows how to use the python numpy and scipy with intel MKL, how to create a virtual environment with these packages. It also includes a sanitiy check benchmark.
+The job file `mkl_job.sh` shows how to use the python numpy and scipy with intel MKL, how to create a virtual environment with these packages. It also includes a sanitiy check benchmark.

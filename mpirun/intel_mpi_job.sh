@@ -3,9 +3,9 @@
 #SBATCH --exclusive 
 #SBATCH --partition=jobs
 #SBATCH --nodes=4
-#SBATCH --ntasks-per-node=2
-#SBATCH --cpus-per-task=1
-#SBATCH --time=00:10:00
+#SBATCH --ntasks-per-node=8
+#SBATCH --cpus-per-task=2
+#SBATCH --time=01:00:00
 #SBATCH --mem=10000
 
 module purge
@@ -21,7 +21,7 @@ export CXX=mpiicpc
 make
 #
 
-# runs the benchmark for [1, 2, 4, 8] processes
+# runs the benchmark for [1, 2, 4, 8] tasks
 srun -n 8 IMB-MPI1
 # see for more information
 # https://software.intel.com/content/www/us/en/develop/documentation/imb-user-guide/top/getting-started/running-intel-mpi-benchmarks.html

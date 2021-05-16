@@ -9,4 +9,4 @@
 #SBATCH --mem=1000
 #SBATCH --time=00:05:00 
 
-python ram_usage_slow.py
+python3 ram_usage_slow.py

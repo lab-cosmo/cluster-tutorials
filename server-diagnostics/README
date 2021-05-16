@@ -31,13 +31,10 @@ I don't see my log messages in the SLURM log
 
 The problem is most likely that the log messages are buffered somewhere before being written into the log file. Depending on the programming language you use there are different solutions.
 
-	When using only prints in python you can force the immediate printing with `flush=True`
+When using only prints in python you can force the immediate printing with `flush=True`
 ```
 print("My log message", flush=True)
 ```
-
-TODO what is with python loggers?
-TODO Solutions for other apps?
 
 
 My job does not start, why?
@@ -52,10 +49,3 @@ You can see the `STATE` of the cluster, and the reason for getting into drained 
 scontrol show node NODE_NAME
 ```
 There should be an explanation under `Reason`. You can contact the admin with that output
-
-How is the priority my job determined?
---------------------------------------
-TODO
-```
-sprio
-```

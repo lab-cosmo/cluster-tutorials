@@ -1,6 +1,6 @@
 <simulation verbosity='medium'>
         <output prefix='bulk_nn'>
-        <properties filename="out" stride="10" >  [ step, time{picosecond}, ensemble_temperature{kelvin}, conserved, temperature{kelvin}, kinetic_cv, potential, volume, pressure_cv, spring, scaledcoords(-1e-5) ]  </properties>        
+        <properties filename="out" stride="10" >  [ step, time{picosecond}, ensemble_temperature{kelvin}, conserved, temperature{kelvin}, kinetic_cv, potential, volume, pressure_cv, spring ]  </properties>        
 	<trajectory filename='pos' stride='100'> positions </trajectory>
                 <checkpoint stride='200' />
         </output>
