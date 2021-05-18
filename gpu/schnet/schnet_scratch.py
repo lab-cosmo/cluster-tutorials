@@ -13,9 +13,9 @@ QM9_DIRECTORY = os.getenv("QM9_DIRECTORY")
 # defined by the server
 MODEL_DIRECTORY = os.getenv("MODEL_DIRECTORY")
 # defined by the server
-LOCALSCRATCH = os.getenv("LOCALSCRATCH")
+SCRATCH = os.getenv("SCRATCH")
 # cp dataset to fast local scratch
-subprocess.call(f"cp {os.path.join(QM9_DIRECTORY, 'qm9.db')} {LOCALSCRATCH}", shell=True)
+subprocess.call(f"cp {os.path.join(QM9_DIRECTORY, 'qm9.db')} {SCRATCH}", shell=True)
 
 DEVICE = 'cuda'
 N_EPOCHS = 3
@@ -25,9 +25,9 @@ PROPERTY_NAME = 'energy_U0'
 # Downloading the dataset can result in problems because of certificate issues, so download it locally
 # on your machine and copy it to the server
 begin = time.time()
-qm9data = QM9(os.path.join(LOCALSCRATCH, 'qm9.db'), download=False, load_only=[QM9.U0], remove_uncharacterized=True)
+qm9data = QM9(os.path.join(SCRATCH, 'qm9.db'), download=False, load_only=[QM9.U0], remove_uncharacterized=True)
 end = time.time()
-print(f"Time to begin SQL connection with dataset {end-begin} s")
+print(f"Time to begin SQL connection with dataset {end-begin} s", flush=True)
 
 split_file = os.path.join(MODEL_DIRECTORY, "split.npz")
 train_idx = np.arange(5000)
@@ -80,5 +80,5 @@ trainer = spk.train.Trainer(
 begin = time.time()
 trainer.train(device=DEVICE, n_epochs=N_EPOCHS)
 end = time.time()
-print(f"Average epoch time {(end-begin)/N_EPOCHS} s")
-subprocess.call(f"rm {os.path.join(LOCALSCRATCH, 'qm9.db')}", shell=True)
+print(f"Average epoch time {(end-begin)/N_EPOCHS} s", flush=True)
+subprocess.call(f"rm {os.path.join(SCRATCH, 'qm9.db')}", shell=True)

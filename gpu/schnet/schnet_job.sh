@@ -5,7 +5,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=1
-#SBATCH --time=0:05:00
+#SBATCH --time=0:20:00
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 
@@ -26,5 +26,7 @@ export QM9_DIRECTORY=/exports/commonscratch/goscinsk/datasets/qm9
 export MODEL_DIRECTORY=$SCRATCH/schnet/models/schnet_tut/
 mkdir -p ${MODEL_DIRECTORY}
 
+printf "\n"
 # run benchmark with python version from virtual environment
-python schnet_ram.py
+#python schnet_ram.py
+python schnet_scratch.py

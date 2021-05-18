@@ -25,7 +25,7 @@ PROPERTY_NAME = 'energy_U0'
 begin = time.time()
 qm9data = spk.datasets.QM9(os.path.join(QM9_DIRECTORY, 'qm9.db'), download=False, load_only=[spk.datasets.QM9.U0], remove_uncharacterized=True)
 end = time.time()
-print(f"Time to begin SQL connection with dataset {end-begin} s")
+print(f"Time to begin SQL connection with dataset {end-begin} s", flush=True)
 
 split_file = os.path.join(MODEL_DIRECTORY, "split.npz")
 train_idx = np.arange(5000)
@@ -50,7 +50,7 @@ val_data = list(val_loader)[0]
 #train_data = list(itertools.chain.from_iterable(train_loader))
 #val_data = list(itertools.chain.from_iterable(val_loader))
 end = time.time()
-print(f"Time to load dataset into RAM {end-begin} s")
+print(f"Time to load dataset into RAM {end-begin} s", flush=True)
 
 model_file = os.path.join(MODEL_DIRECTORY, "split.npz")
 schnet = spk.representation.SchNet(
@@ -115,4 +115,4 @@ for epoch in range(N_EPOCHS):
     end = time.time()
     epoch_timings.append(end-begin)
 
-print(f"Average epoch time {np.mean(epoch_timings)} s")
+print(f"Average epoch time {np.mean(epoch_timings)} s", flush=True)
