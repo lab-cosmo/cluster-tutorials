@@ -6,11 +6,11 @@ Then you can use the job script `notebook_job.sh` to run the notebook on a serve
 ```
 ssh -t <GASPAR_ACCOUNT>@<FRONTEND_SERVER_ADDRESS> -L <LOCAL_PORT>:localhost:<REMOTE_PORT> ssh <REMOTE_PORT> -L <REMOTE_PORT>:localhost:<REMOTE_PORT>
 ```
-You can see that the ssh connection is forwarded from your local machine to the frontend server and from the frontend server to the computation port. We use the same REMOTE_PORT for the frontend server and computation node for simplicity. If you not already runnig some application on port 8888, you can bind the notebook on your local machine on port 8888 and forward it to the remote server with 
+You can see that the ssh connection is forwarded from your local machine to the frontend server and from the frontend server to the computation port. We use the same `<REMOTE_PORT>` for the frontend server and computation node for simplicity. If you not already runnig some application on port 8888, you can bind the notebook on your local machine on port 8888 and forward it to the remote server with 
 ```
 ssh -t <GASPAR_ACCOUNT>@<FRONTEND_SERVER_ADDRESS> -L 8888:localhost:8889 ssh <NODE_NAME> -L 8889:localhost:8889
 ```
-where <NODE_NAME> can be seen in the output of the slurm job `slurm.out`. You can check on the frontend server if the port is already in use by typing
+where `<NODE_NAME>` can be seen in the output of the slurm job `slurm.out`. You can check on the frontend server if the port is already in use by typing
 ```
 netstat -l | grep 8889
 ```
