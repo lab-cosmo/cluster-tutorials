@@ -7,7 +7,7 @@ jupyter notebook password
 Then you can use the job script `notebook_job.sh` to run the notebook on a server which binds the remote port 8889. Wait until the job runs (check with `squeue`). In general you can build an ssh tunnel from your local machine to a remotve node with
 
 ```
-ssh -t <GASPAR_ACCOUNT>@<FRONTEND_SERVER_ADDRESS> -L <LOCAL_PORT>:localhost:<LOCAL_PORT> ssh <NODE_NAME> -L <REMOTE_PORT>:localhost:<REMOTE_PORT>
+ssh -t <GASPAR_ACCOUNT>@<FRONTEND_SERVER_ADDRESS> -L <LOCAL_PORT>:localhost:<LOCAL_PORT> ssh <NODE_NAME> -L <LOCAL_PORT>:localhost:<REMOTE_PORT>
 ```
 
 If you not already runnig some application on port 8888, you can bind the notebook on your local machine on port 8888 and forward it to the remote server with 
@@ -19,7 +19,7 @@ ssh -t <GASPAR_ACCOUNT>@<FRONTEND_SERVER_ADDRESS> -L 8888:localhost:8888 ssh <NO
 where <NODE_NAME> can be seen in the output of the slurm job `slurm.out`. Now type in your browser
 
 ```
-<NODE_NAME>:8888
+localhost:8888
 
 ```
 
