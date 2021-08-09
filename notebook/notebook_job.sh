@@ -10,11 +10,11 @@
 #SBATCH --output=slurm.out
 #SBATCH --exclusive
 
-# Here you could use for virtual environment
-# If not changed it automatically creates one, it should not be overwrited
+# Creates a python environment cluster-tutorial, if it does not exist
 python3 -m venv $HOME/venv/cluster-tutorial
+# activates the python environment cluster-tutorial
 source $HOME/venv/cluster-tutorial/bin/activate
-python -m pip install --upgrade pip
+pip install --upgrade pip
 pip install jupyter
 
 printf "\n\nNODE_NAME: ${SLURM_JOB_NODELIST}\n\n"
