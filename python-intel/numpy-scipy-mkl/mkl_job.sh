@@ -52,6 +52,8 @@ printf "\n\n\n"
 
 # You can use keep this environment as base and create new mkl environments for playing around
 #cp -R $HOME/venv/mkl-base $HOME/venv/mkl-playground
+# replace the usage of mkl-base with the new folder name to prevent usage of the copied directory
+#find $HOME/venv/jacobian -type f -exec sed -i 's/mkl-base/mkl-playground/g' {} \
 
 # if you want to use again the standard python version
 deactivate
