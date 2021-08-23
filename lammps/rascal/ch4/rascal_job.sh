@@ -11,6 +11,6 @@ module purge
 module load gcc
 module load lammps
 
-mpirun -n 1 lmp_mpi -i ch4.in.lammps > log.lammps
+mpirun -n 1 lmp_mpi -i ch4.in.lammps
 exit 0
 
