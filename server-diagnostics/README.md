@@ -31,7 +31,11 @@ I don't see my log messages in the SLURM log
 
 The problem is most likely that the log messages are buffered somewhere before being written into the log file. Depending on the programming language you use there are different solutions.
 
-When using only prints in python you can force the immediate printing with `flush=True`
+In python you can enforce immediate prints by runnig python with the flag '-u'
+```
+python -u <PROGRAM>.py
+```
+or if you want to only immediately output certain prints then you can use `flush=True`
 ```
 print("My log message", flush=True)
 ```
