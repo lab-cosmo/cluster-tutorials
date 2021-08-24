@@ -1,0 +1,1 @@
+By default the maximum time of job can only be 2 days. If you need to run jobs for a longer time you can ask one of the admins to update your profile so you can run jobs for up to 7 days. You can find a job example script in this folder which uses the updated QOS, only available if your profile has been updated.
