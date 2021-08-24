@@ -16,9 +16,8 @@ read_data ch4.data.lammps
 #   none: no additional output to the standard lammps one
 #   debug: prints outputs of the energy and force caluculation of rascal
 #   trace: prints all available information including neighborlist information
-# ATOM_TYPE_LIST = list of all atom species in structure file ch4.data.lammps
+# ATOM_SPECIES_LIST = list of all atom species in structure file ch4.data.lammps
 #                  (IMPORTANT) sorted ascending according to lammps atom types
-#                  which are set in the ch4.data.lammps file
 pair_style rascal
 pair_coeff * * none ch4_model.json 6 1
 
