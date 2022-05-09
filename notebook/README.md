@@ -4,7 +4,7 @@ jupyter notebook password
 ```
 Then you can use the job script `notebook_job.sh` to run the notebook on a server which binds the remote port 8889. Wait until the job runs (check with `squeue`). In general you can build an ssh tunnel from your local machine to a remote node with
 ```
-ssh -t <GASPAR_ACCOUNT>@<FRONTEND_SERVER_ADDRESS> -L <LOCAL_PORT>:localhost:<REMOTE_PORT> ssh <REMOTE_PORT> -L <REMOTE_PORT>:localhost:<REMOTE_PORT>
+ssh -t <GASPAR_ACCOUNT>@<FRONTEND_SERVER_ADDRESS> -L <LOCAL_PORT>:localhost:<REMOTE_PORT> ssh <NODE_NAME> -L <REMOTE_PORT>:localhost:<REMOTE_PORT>
 ```
 You can see that the ssh connection is forwarded from your local machine to the frontend server and from the frontend server to the computation port. We use the same `<REMOTE_PORT>` for the frontend server and computation node for simplicity. If you not already runnig some application on port 8888, you can bind the notebook on your local machine on port 8888 and forward it to the remote server with 
 ```
