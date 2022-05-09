@@ -1,3 +1,5 @@
+If you have jupyter notebook already installed, please check that it is installed in your virtual environment (you see it with `python -c "import jupyter; print(jupyter.__file__)"`) and not in your `.local/lib/` folder. If the latter is the case, please uninstall it and properly install it in your virtual environment.
+
 Before you start to run the notebook on the remote server, set the jupyter notebook password on the on the frontend server
 ```
 jupyter notebook password
