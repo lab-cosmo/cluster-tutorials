@@ -19,4 +19,4 @@ pip install jupyter
 
 printf "\n\nNODE_NAME: ${SLURM_JOB_NODELIST}\n\n"
 
-jupyter notebook --no-browser --port=8889
+python -m jupyter notebook --no-browser --port=8889
