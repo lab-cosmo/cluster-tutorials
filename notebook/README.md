@@ -21,3 +21,18 @@ If the output is empty, then it should be not in use. Now type in your browser o
 localhost:8888
 ```
 and type the password you have set at the beginning or if you haven't done so, you can also copy the token in the slurm.out script
+
+## FAQs
+
+Q1. When entering my password for jupyter notebooks on my local browser, I get an error message that states "Invalid credentials." I am entering the correct password that I set with `jupyter notebook password`. Why is this?
+Answer: This may come from the <REMOTE_PORT> on the Frontend Server already being in use. Check the output in terminal when starting up the SSH connection to the node. You might have received an inconspicuous error message that states:
+```
+bind [127.0.0.1]:8889: Address already in use
+channel_setup_fwd_listener_tcpip: cannot listen to port: 8889
+Could not request local forwarding.
+```
+when your <REMOTE_PORT> is set to 8889, for example.
+To remedy this, change the <REMOTE_PORT> address on the Frontend Server when connecting through SSH. For example:
+```
+ssh -t <GASPAR_ACCOUNT>@<FRONTEND_SERVER_ADDRESS> -L 8888:localhost:9001 ssh <NODE_NAME> -L 9001:localhost:8889
+```
