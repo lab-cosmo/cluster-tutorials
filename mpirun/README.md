@@ -21,7 +21,6 @@ salloc <OPTIONS> mpirun <EXECUTABLE>
 or
 ```
 srun <OPTIONS> mpirun <EXECUTABLE>
-
 ```
 
 If you don't want an interactive session, you can use `srun` in the submitted sbatch job script
