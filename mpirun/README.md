@@ -28,3 +28,11 @@ If you don't want an interactive session, you can use `srun` in the submitted sb
 srun <EXECUTABLE>
 ```
 See the `mpi_job` job file as example to run intel MPI benchmark
+
+## FAQs
+
+**Q1. My job is in a stale state with an Slurm error
+`PMK_KVS_Barrier duplicate request from task 0`. Why is this?**
+
+This may come from the using only `mpirun <EXECUTABLE>` in your Slurm submission script.
+Try replacing with `srun <OPTIONS> mpirun <EXECUTABLE>`.
