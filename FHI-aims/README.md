@@ -29,4 +29,6 @@ But the important points are (page 15 in the manual)
 
 4. `cmake -C initial_cache.cmake ..` (capital C)
 
-5. `make -j [number]` (where `number` is the number of cores to compile with)
+5. `make -j [number]`
+   where `number` is the number of cores to compile with. A reasonable choice is between *4* and *16*.
+   A too large number may lead to compilation errors.
