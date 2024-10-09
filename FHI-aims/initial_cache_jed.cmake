@@ -1,7 +1,7 @@
 ## This file was taken from FHIaims/cmake/toolchains/intel.cmake
 ## version 240926. Any modifcations made are indicated.
 
-set(TARGET_NAME aims.x CACHE STRING "")
+set(TARGET_NAME aims.x CACHE STRING "")  # comment this out to instead have a version-stamped exectuable
 set(CMAKE_INSTALL_PREFIX "$ENV{AIMS_HOME}" CACHE STRING "")
 
 ###############
