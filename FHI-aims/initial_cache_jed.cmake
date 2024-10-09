@@ -1,7 +1,7 @@
-## This file was taken from FHIaims/cmake/toolchains/intel.cmake
+## This was taken from FHIaims/cmake/toolchains/intel.cmake
 ## version 240926. Any modifcations made are indicated.
 
-set(TARGET_NAME aims.x CACHE STRING "")  # comment this out to instead have a version-stamped exectuable
+# set(TARGET_NAME aims.x CACHE STRING "")  # comment this out to have a version-stamped executable
 set(CMAKE_INSTALL_PREFIX "$ENV{AIMS_HOME}" CACHE STRING "")
 
 ###############
@@ -31,3 +31,5 @@ set(USE_SCALAPACK ON CACHE BOOL "" FORCE)
 set(USE_LIBXC ON CACHE BOOL "" FORCE)
 set(USE_HDF5 OFF CACHE BOOL "" FORCE)
 set(USE_RLSY ON CACHE BOOL "" FORCE)
+
+# TODO: link external ELPA
