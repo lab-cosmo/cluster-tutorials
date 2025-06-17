@@ -1,8 +1,9 @@
 # MAD 2.0: multi-target foundation data computed with `FHIaims`
 
-Wiki authors: Joe Abbott, Cesare Malosso
+**Wiki authors: Joe Abbott, Cesare Malosso**
 
-This is intended as **the** master copy for running FHIaims calculations consistent with the settings used for the MAD 2.0 dataset.
+> [!TIP]
+> **What is this guide for?** The idea is to provide a common set of FHIaims settings for all COSMO-nauts who want to run DFT on their dataset to use. By doing so, it will allow us to coherently perform fine-tuning, transfer learning, and application-focussed test cases of the (not yet existing) PET-MAD-2 mutli-target foundation model.
 
 ## User Guide
 
@@ -16,9 +17,6 @@ Those generated as default:
     - forces
     - stress
     - Density Matrix (k-space, also acts an SCF restart file)
-
-and optionally, if the relevant lines are uncommented:
-
     - Hamiltonian (real-space, printed with HDF5)
     - Density of States
 
@@ -28,7 +26,20 @@ Then an SCF restart is optionally performed to generate the extra targets:
     - electron density basis decomposition
 
 > [!WARNING]
-> We are currently in the process of testing the restart functionality for generating the polarization and density decompositions. Check back soon.
+> We are currently in the process of testing the restart functionality for generating the polarization and density decompositions. As these are submitted as subsequent and separate calculations, generation of the above targets can be performed as usual first, with extension to these optional targets if necessary. Check back soon for details.
+
+The outputting of these targets and all other required DFT settings are provided in the example [`control.in`](example/control.in) with header:
+
+```
+# ==============================================================================
+# One control.in to rule them all, and in the darkness bind them.
+# 
+# Created by COSMOnauts, for COSMOnauts.
+#
+# ==============================================================================
+...
+```
+
 
 ### Species Defaults
 
@@ -71,7 +82,7 @@ calculation for each frame is available at `scripts/prepare_aims_input.py`.
 ### How `FHIaims` was built
 
 > [!IMPORTANT]
-> Update this once [the MR](https://aims-git.rz-berlin.mpg.de/aims/FHIaims/-/merge_requests/1843) has been merged to the main branch.
+> To be updated once [this merge request](https://aims-git.rz-berlin.mpg.de/aims/FHIaims/-/merge_requests/1843) on the FHIaims GitLab has been merged to the main branch.
 
 `FHIaims` has been compiled from source in the directory `build/`.
 
