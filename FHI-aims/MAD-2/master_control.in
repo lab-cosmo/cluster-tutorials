@@ -1,3 +1,10 @@
+# ==============================================================================
+# One control.in to rule them all, and in the darkness bind them.
+# 
+# Created by COSMOnauts, for COSMOnauts.
+#
+# ==============================================================================
+
 override_warning_libxc          .true.
 xc                              libxc MGGA_X_R2SCAN+MGGA_C_R2SCAN
 spin                            none
