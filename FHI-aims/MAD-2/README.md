@@ -43,12 +43,18 @@ to give the sepcies settings found in `tight_modified`.
 
 ### Example calculation
 
-The `FHIaims` executable is stored at: `aims.250610.scalapack.hdf5.mpi.cosmo.mad.2`. An
-example of its use is provided in the `example/` folder.
+An example demonstrating its usage is available in the `example/` directory. 
+The provided submission script is configured for the Jed system but can be 
+adapted to other HPC environments as needed.
 
 To run this example, copy the contents of `example/` to somewhere in your `home/`
-folder. Run `sbatch run-aims.sh` to compute all the targets.
+folder. Run `sbatch run-aims_jed.sh` to compute all the targets.
 
+
+### Scripts
+
+Python script for reading an `xyz` trajectory file and setting up an FHI-aims 
+calculation for each frame is available at `scripts/prepare_aims_input.py`.
 
 ## Extra Info
 
@@ -72,7 +78,7 @@ git checkout 5f2c1992e53bf04e6e851868574be74f8785d344
 
 ```bash
 mkdir build
-cp  ../ .
+cp  ../../jed_settings/* .
 ```
 
 3. Run cmake and make
