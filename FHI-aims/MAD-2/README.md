@@ -38,7 +38,7 @@ for file in *_default; do
 done
 ```
 
-to give the sepcies settings found in `tight_modified`.
+To give the species settings found in `species_defaults/tight_modified`.
 
 
 ### Example calculation
@@ -65,7 +65,8 @@ calculation for each frame is available at `scripts/prepare_aims_input.py`.
 Steps to reproduce the build on Jed:
 
 1. Download the source code from GitLab. This requires an account with access permission
-   to FHIaims. Switch to the commit pinned to the `250610` version, which specifically enables support for ScaLAPACK and HDF5.
+   to FHIaims. Switch to the commit pinned to the `250610` version, which specifically 
+   enables support for ScaLAPACK and HDF5.
 
 ```bash
 git clone https://aims-git.rz-berlin.mpg.de/aims/FHIaims.git
@@ -78,6 +79,7 @@ git checkout 5f2c1992e53bf04e6e851868574be74f8785d344
 
 ```bash
 mkdir build
+cd build
 cp  ../../jed_settings/* .
 ```
 
