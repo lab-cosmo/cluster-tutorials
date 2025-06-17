@@ -53,7 +53,7 @@ folder. Run `sbatch run-aims_jed.sh` to compute all the targets.
 
 ### Scripts
 
-Python script for reading an `xyz` trajectory file and setting up an FHI-aims 
+Python script for reading an `xyz` trajectory file and setting up an FHIaims 
 calculation for each frame is available at `scripts/prepare_aims_input.py`.
 
 ## Extra Info
@@ -86,7 +86,7 @@ cp  ../../jed_settings/* .
 ```bash
 ./run-cmake.sh
 ```
-Check that `FHI-aims version: 250610` is printed. Once finished successfully, run the
+Check that `FHIaims version: 250610` is printed. Once finished successfully, run the
 build:
 
 ```bash
