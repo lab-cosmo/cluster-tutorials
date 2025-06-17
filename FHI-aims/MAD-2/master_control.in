@@ -35,7 +35,7 @@ compute_forces                  .true.                  # forces
 compute_analytical_stress       .true.                  # stress
 
 # HAMILTONIAN and DOS
-# use_local_index               .false.
-# output_level                  full
-# output_rs_matrices            HDF5
-# output                        eigenstate_info
+use_local_index               .false.
+output_level                  full
+output_rs_matrices            HDF5
+output                        eigenstate_info
