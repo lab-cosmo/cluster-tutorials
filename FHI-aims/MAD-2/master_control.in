@@ -1,0 +1,34 @@
+override_warning_libxc          .true.
+xc                              libxc MGGA_X_R2SCAN+MGGA_C_R2SCAN
+spin                            none
+charge                          0.
+relativistic                    atomic_zora scalar
+k_grid_density                  8
+sc_iter_limit                   2000
+walltime                        14000                   # 4h time limit        
+# use_dipole_correction         .true.                  # NOTE: only use with slabs!
+
+# Convergence settings
+adjust_scf                      always 2	      
+adjust_scf_param                lowgap occupation_width 0.05
+adjust_scf_param                largegap occupation_width 0.05
+
+sc_accuracy_etot                1e-6
+sc_accuracy_forces              1e-4
+sc_accuracy_rho                 1e-5
+
+# Restart settings
+elsi_restart                    read_and_write 10       # Outputs k-space density matrices
+
+###### Targets
+
+# MLIPs
+# (energy automatically printed in aims.out)            # energy
+compute_forces                  .true.                  # forces
+compute_analytical_stress       .true.                  # stress
+
+# HAMILTONIAN and DOS
+# use_local_index               .false.
+# output_level                  full
+# output_rs_matrices            HDF5
+# output                        eigenstate_info
