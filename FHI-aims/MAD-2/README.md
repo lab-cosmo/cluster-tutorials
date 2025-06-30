@@ -32,7 +32,7 @@ Then an SCF restart is optionally performed to generate the extra targets:
 
 ### Species Defaults
 
-The `tight` defaults are taken from FHIaims version `250610`, from directory `FHIaims/species_defaults/defaults_2020/tight`.
+The `tight` defaults are taken from FHIaims version `250626`, from directory `FHIaims/species_defaults/defaults_2020/tight`.
 
 Then, the defaults of the Lanthanides and Actinides are modified in the following way, removing an extra confinement basis function:
 
@@ -70,22 +70,19 @@ calculation for each frame is available at `scripts/prepare_aims_input.py`.
 
 ### How `FHIaims` was built
 
-> [!IMPORTANT]
-> Update this once [the MR](https://aims-git.rz-berlin.mpg.de/aims/FHIaims/-/merge_requests/1843) has been merged to the main branch.
-
 `FHIaims` has been compiled from source in the directory `build/`.
 
 Steps to reproduce the build on Jed:
 
 1. Download the source code from GitLab. This requires an account with access permission
-   to FHIaims. Switch to the commit pinned to the `250610` version, which specifically 
+   to FHIaims. Switch to the commit pinned to the `250626` version, which specifically 
    enables support for ScaLAPACK and HDF5.
 
 ```bash
 git clone https://aims-git.rz-berlin.mpg.de/aims/FHIaims.git
 # enter username and password
 cd FHIaims
-git checkout 5f2c1992e53bf04e6e851868574be74f8785d344
+git checkout bbb7258b1c1ed9f3283031dda3bea1bc74bd3a26
 ```
 
 2. Create a build directory and copy the build files (specific to Jed) into it.
@@ -101,12 +98,12 @@ cp  ../../jed_settings/* .
 ```bash
 ./run-cmake.sh
 ```
-Check that `FHIaims version: 250610` is printed. Once finished successfully, run the
+Check that `FHIaims version: 250626` is printed. Once finished successfully, run the
 build:
 
 ```bash
 sbatch run-make.sh
 ```
 
-The executable is then under the file name `aims.250610.scalapack.hdf5.mpi.cosmo.mad.2`. For convenience, we also store this on SCITAS at path: `/work/cosmo/COSMO-MAD-2/executable/aims.250610.scalapack.hdf5.mpi.cosmo.mad.2`.
+The executable is then under the file name `aims.250626.scalapack.hdf5.mpi.cosmo.mad.2`. For convenience, we also store this on SCITAS at path: `/work/cosmo/COSMO-MAD-2/executable/aims.250626.scalapack.hdf5.mpi.cosmo.mad.2`.
 

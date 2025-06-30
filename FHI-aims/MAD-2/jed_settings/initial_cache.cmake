@@ -1,6 +1,6 @@
 ## This was taken from FHIaims/cmake/toolchains/intel.cmake version 250320. Any modifcations made are indicated.
 
-set(TARGET_NAME aims.250610.scalapack.hdf5.mpi.cosmo.mad.2 CACHE STRING "")
+set(TARGET_NAME aims.250626.scalapack.hdf5.mpi.cosmo.mad.2 CACHE STRING "")
 set(CMAKE_INSTALL_PREFIX "./" CACHE STRING "")
 
 ###############
