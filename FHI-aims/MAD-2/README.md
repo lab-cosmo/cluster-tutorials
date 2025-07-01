@@ -9,7 +9,7 @@
 
 ### DFT settings
 
-``master_control.in`` contains the standard DFT, computational, and target-specific settings for generating data. Calculations are performed in a two-step process. First, SCF is converged and the following targets generated.
+We have constructed a single FHIaims settings file (a `control.in`) that contains the standard DFT, computational, and target-specific settings for generating data. Calculations are performed in a two-step process. First, SCF is converged and the following targets generated.
 
 Those generated as default:
 
@@ -89,7 +89,7 @@ calculation for each frame is available at `scripts/prepare_aims_input.py`.
 Steps to reproduce the build on Jed:
 
 1. Download the source code from GitLab. This requires an account with access permission
-   to FHIaims. Switch to the commit pinned to the `250610` version, which specifically 
+   to FHIaims. Switch to the commit pinned to the `250626` version, which specifically 
    enables support for ScaLAPACK and HDF5.
 
 ```bash
@@ -112,12 +112,12 @@ cp  ../../jed_settings/* .
 ```bash
 ./run-cmake.sh
 ```
-Check that `FHIaims version: 250610` is printed. Once finished successfully, run the
+Check that `FHIaims version: 250626` is printed. Once finished successfully, run the
 build:
 
 ```bash
 sbatch run-make.sh
 ```
 
-The executable is then under the file name `aims.250610.scalapack.hdf5.mpi.cosmo.mad.2`. For convenience, we also store this on SCITAS at path: `/work/cosmo/COSMO-MAD-2/executable/aims.250610.scalapack.hdf5.mpi.cosmo.mad.2`.
+The executable is then under the file name `aims.250626.scalapack.hdf5.mpi.cosmo.mad.2`. For convenience, we also store this on SCITAS at path: `/work/cosmo/COSMO-MAD-2/executable/aims.250626.scalapack.hdf5.mpi.cosmo.mad.2`.
 
