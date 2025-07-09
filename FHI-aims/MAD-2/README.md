@@ -96,7 +96,7 @@ Steps to reproduce the build on Jed:
 git clone https://aims-git.rz-berlin.mpg.de/aims/FHIaims.git
 # enter username and password
 cd FHIaims
-git checkout 5f2c1992e53bf04e6e851868574be74f8785d344
+git checkout bbb7258b1c1ed9f3283031dda3bea1bc74bd3a26
 ```
 
 2. Create a build directory and copy the build files (specific to Jed) into it.
