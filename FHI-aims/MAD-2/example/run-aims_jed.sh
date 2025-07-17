@@ -7,7 +7,11 @@
 #SBATCH --account=cosmo
 
 module purge
-module load intel intel-oneapi-mkl intel-oneapi-mpi elpa hdf5/1.12.2-mpi
+module load cmake
+module load intel-oneapi-compilers/2024.1.0
+module load intel-oneapi-mpi/2021.12.1
+module load intel-oneapi-mkl/2024.0.0
+module load hdf5/1.14.3-mpi
 
 ulimit -s unlimited
 export OMP_NUM_THREADS=1
@@ -16,4 +20,4 @@ export MKL_NUM_THREADS=1
 export I_MPI_FABRICS=shm
 
 
-srun /work/cosmo/COSMO-MAD-2/executable/aims.250610.scalapack.hdf5.mpi.cosmo.mad.2 < control.in > aims.out
+srun /work/cosmo/COSMO-AIMS/FHIaims_last/build_newjed/aims.250626.hdf5.scalapack.mpi.x < control.in > aims.out
